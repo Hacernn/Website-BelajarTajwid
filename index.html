@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Ilmu Tajwid - Belajar Membaca Al-Qur'an dengan Benar</title>
+    <style>
+        :root {
+            --primary: #2f782c;
+            --secondary: #004445;
+            --accent: #f8b400;
+            --light: #d2a923;
+            --dark: #1a1a1a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: rgb(255, 255, 255);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            background-color: var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero {
+            background: url('https://images.unsplash.com/photo-1542816417-0983670e46da?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: rgb(255, 255, 255);
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .highlight {
+            background-color: #fffde7;
+            padding: 15px;
+            border-left: 4px solid var(--accent);
+            margin: 1.5rem 0;
+        }
+        
+        .arabic {
+            font-family: 'Traditional Arabic', 'Arial', sans-serif;
+            font-size: 1.5rem;
+            text-align: right;
+            direction: rtl;
+        }
+        
+        .team-section {
+            background-color: #f5f5f5;
+            padding: 3rem 0;
+        }
+        
+        .team-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            width: 250px;
+            text-align: center;
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #e0a800;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .hero {
+                height: 300px;
+            }
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 8px;
+                max-width: 100%;
+            }
+            .card {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+            .hero {
+                height: 180px;
+                font-size: 0.95rem;
+            }
+            .hero-content h2 {
+                font-size: 1.3rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            h2 {
+                font-size: 1.1rem;
+            }
+            table, th, td {
+                font-size: 0.85rem;
+                padding: 6px;
+            }
+            .team-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .team-member {
+                width: 100%;
+            }
+            section {
+                padding: 2rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Ilmu Tajwid</h1>
+            <p>Memahami seni membaca Al-Qur'an dengan benar sesuai kaidah</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#pengertian">Pengertian</a></li>
+            <li><a href="#sejarah">Sejarah</a></li>
+            <li><a href="#hukum">Hukum Mempelajari</a></li>
+            <li><a href="#tingkatan">Tingkatan Bacaan</a></li>
+            <li><a href="#hukum-tajwid">Hukum Tajwid</a></li>
+            <li><a href="#makhraj">Makhraj Huruf</a></li>
+            <li><a href="#contoh">Contoh Penerapan</a></li>
+            <li><a href="#latihan">Latihan</a></li>
+            <li><a href="#team">Tim Kami</a></li>
+        </ul>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Belajar Tajwid dengan Mudah dan Menyenangkan</h2>
+            <p>Pelajari cara membaca Al-Qur'an dengan benar sesuai kaidah ilmu tajwid melalui panduan lengkap kami</p>
+            <a href="#pengertian" class="btn">Mulai Belajar</a>
+        </div>
+    </section>
+    
+    <section id="pengertian" class="container">
+        <h2>Pengertian Ilmu Tajwid</h2>
+        <div class="card">
+            <p>Ilmu Tajwid secara bahasa berasal dari kata <strong>جَوَّدَ - يُجَوِّدُ - تَجْوِيْدًا</strong> yang berarti membaguskan. Secara istilah, ilmu tajwid adalah ilmu yang mempelajari tata cara membaca Al-Qur'an dengan baik dan benar sesuai dengan yang diajarkan oleh Rasulullah SAW.</p>
+            
+            <div class="highlight">
+                <p class="arabic">وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا</p>
+                <p>"Dan bacalah Al-Qur'an itu dengan tartil (perlahan-lahan)." (QS. Al-Muzzammil: 4)</p>
+            </div>
+            
+            <p>Imam Ali bin Abi Thalib mendefinisikan tajwid sebagai: <em>"Mengeluarkan setiap huruf dari tempat keluarnya dengan memberikan hak dan mustahaknya."</em> Hak huruf adalah sifat asli yang selalu menyertai huruf tersebut, seperti sifat jahr, syiddah, isti'la', dan lain-lain. Sedangkan mustahak huruf adalah sifat yang kadang menyertai huruf dan kadang tidak, seperti tafkhim, tarqiq, idgham, dan sebagainya.</p>
+        </div>
+    </section>
+    
+    <section id="sejarah" class="container">
+        <h2>Sejarah Ilmu Tajwid</h2>
+        <div class="card">
+            <h3>Asal Usul Ilmu Tajwid</h3>
+            <p>Ilmu tajwid mulai berkembang bersamaan dengan perkembangan Islam dan penyebaran Al-Qur'an. Pada masa Rasulullah SAW, tajwid dipelajari secara langsung melalui talaqqi (bertemu langsung) dengan beliau. Para sahabat belajar Al-Qur'an langsung dari Rasulullah dengan memperhatikan makhraj dan sifat setiap huruf.</p>
+            
+            <h3>Perkembangan Ilmu Tajwid</h3>
+            <p>Setelah masa Rasulullah, ilmu tajwid terus berkembang melalui para tabi'in dan generasi setelahnya. Pada abad ke-3 Hijriyah, mulai muncul karya-karya tulis tentang ilmu tajwid. Salah satu ulama awal yang menulis tentang tajwid adalah Abu Ubaid al-Qasim bin Salam (wafat 224 H) dalam kitabnya "Al-Qira'at".</p>
+            
+            <p>Pada abad ke-4 Hijriyah, ilmu tajwid semakin berkembang dengan munculnya ulama-ulama seperti Abu Bakar bin Mujahid (wafat 324 H) yang menetapkan tujuh imam qira'at. Kemudian pada abad ke-7 Hijriyah, Imam Ibn al-Jazari (wafat 833 H) menulis kitab "Tayyibat an-Nashr" dan "Ad-Durrah al-Mudhiyyah" yang menjadi rujukan utama dalam ilmu tajwid hingga sekarang.</p>
+            
+            <h3>Pembukuan Ilmu Tajwid</h3>
+            <p>Ilmu tajwid mulai dibukukan secara sistematis pada abad ke-4 Hijriyah. Beberapa kitab penting dalam perkembangan ilmu tajwid antara lain:</p>
+            <ul>
+                <li>Kitab "At-Taysir fi al-Qira'at as-Sab'" karya Abu Amr ad-Dani (wafat 444 H)</li>
+                <li>Kitab "Asy-Syatibiyyah" karya al-Qasim bin Firruh asy-Syatibi (wafat 590 H)</li>
+                <li>Kitab "An-Nasyr fi al-Qira'at al-'Asyr" karya Imam Ibn al-Jazari</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section id="hukum" class="container">
+        <h2>Hukum Mempelajari Ilmu Tajwid</h2>
+        <div class="card">
+            <h3>Hukum Mempelajari Ilmu Tajwid</h3>
+            <p>Para ulama sepakat bahwa mempelajari ilmu tajwid adalah <strong>fardhu kifayah</strong>, artinya wajib bagi sebagian muslim untuk mempelajarinya sehingga cukup mewakili yang lain. Namun, mengamalkan tajwid ketika membaca Al-Qur'an adalah <strong>fardhu 'ain</strong>, wajib bagi setiap muslim yang membaca Al-Qur'an.</p>
+            
+            <div class="highlight">
+                <p class="arabic">وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا</p>
+                <p>"Dan bacalah Al-Qur'an itu dengan tartil (perlahan-lahan)." (QS. Al-Muzzammil: 4)</p>
+            </div>
+            
+            <p>Imam Ibn al-Jazari dalam kitabnya "Al-Muqaddimah" menyatakan:</p>
+            <p class="highlight"><em>"Membaca Al-Qur'an dengan tajwid adalah suatu kewajiban. Barangsiapa yang tidak membacanya dengan tajwid, maka ia berdosa. Karena Allah menurunkan Al-Qur'an dengan tajwid, dan demikianlah Al-Qur'an sampai kepada kita dari generasi ke generasi."</em></p>
+            
+            <h3>Landasan Hukum Tajwid</h3>
+            <p>Landasan hukum mempelajari dan mengamalkan tajwid dapat dilihat dari beberapa sumber:</p>
+            <ol>
+                <li>Al-Qur'an: QS. Al-Muzzammil: 4 tentang perintah membaca dengan tartil</li>
+                <li>Hadis Nabi: "Bacalah Al-Qur'an sesuai dengan cara/lagu orang Arab" (HR. Bukhari)</li>
+                <li>Ijma' ulama: Kesepakatan ulama sejak zaman sahabat hingga kini tentang wajibnya tajwid</li>
+                <li>Qiyas: Analogi dengan kewajiban melaksanakan ibadah sesuai tuntunan Nabi</li>
+            </ol>
+        </div>
+    </section>
+    
+    <section id="tingkatan" class="container">
+        <h2>Tingkatan Bacaan Al-Qur'an</h2>
+        <div class="card">
+            <p>Dalam membaca Al-Qur'an, terdapat tiga tingkatan kecepatan bacaan yang dikenal:</p>
+            
+            <table>
+                <tr>
+                    <th>Tingkatan</th>
+                    <th>Pengertian</th>
+                    <th>Contoh Ayat</th>
+                    <th>Dalil</th>
+                </tr>
+                <tr>
+                    <td>Tahqiq</td>
+                    <td>Membaca dengan sangat perlahan, tenang, dan jelas dengan memenuhi semua hak huruf dan hukum tajwid</td>
+                    <td class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</td>
+                    <td>QS. Al-Muzzammil: 4 tentang tartil</td>
+                </tr>
+                <tr>
+                    <td>Tartil</td>
+                    <td>Membaca dengan kecepatan sedang, memenuhi semua hukum tajwid tetapi lebih cepat dari tahqiq</td>
+                    <td class="arabic">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</td>
+                    <td>QS. Al-Furqan: 32</td>
+                </tr>
+                <tr>
+                    <td>Hadr</td>
+                    <td>Membaca dengan cepat tetapi tetap menjaga hukum tajwid dan makhraj huruf</td>
+                    <td class="arabic">قُلْ هُوَ اللَّهُ أَحَدٌ</td>
+                    <td>HR. Bukhari tentang kebolehan membaca cepat</td>
+                </tr>
+            </table>
+            
+            <h3>Penjelasan Masing-masing Tingkatan</h3>
+            <p><strong>1. Tahqiq</strong>: Tingkatan bacaan paling lambat, biasanya digunakan oleh pemula yang sedang belajar tajwid atau saat mengajarkan Al-Qur'an. Pada tingkatan ini, semua hukum tajwid diterapkan secara sempurna dengan memperpanjang mad sesuai ukurannya.</p>
+            
+            <p><strong>2. Tartil</strong>: Tingkatan bacaan yang dianjurkan dalam Al-Qur'an. Kecepatannya sedang, lebih cepat dari tahqiq tetapi tetap memenuhi semua hukum tajwid. Tartil adalah cara membaca yang paling utama karena menggabungkan antara keindahan dan ketepatan.</p>
+            
+            <div class="highlight">
+                <p class="arabic">وَقُرْآنًا فَرَقْنَاهُ لِتَقْرَأَهُ عَلَى النَّاسِ عَلَىٰ مُكْثٍ وَنَزَّلْنَاهُ تَنزِيلًا</p>
+                <p>"Dan Al-Qur'an (Kami turunkan) berangsur-angsur agar engkau (Muhammad) membacakannya kepada manusia perlahan-lahan dan Kami menurunkannya secara bertahap." (QS. Al-Isra': 106)</p>
+            </div>
+            
+            <p><strong>3. Hadr</strong>: Bacaan cepat tetapi tetap menjaga hukum tajwid. Biasanya digunakan oleh mereka yang sudah hafal Al-Qur'an dan ingin mengulang hafalannya dalam waktu singkat. Meski cepat, makhraj dan sifat huruf harus tetap tepat.</p>
+        </div>
+    </section>
+    
+    <section id="hukum-tajwid" class="container">
+        <h2>Hukum-Hukum Tajwid</h2>
+        <div class="card">
+            <p>Berikut adalah tabel lengkap tentang hukum-hukum tajwid beserta penjelasan dan dalilnya:</p>
+            
+            <table>
+                <tr>
+                    <th>Hukum Tajwid</th>
+                    <th>Pengertian</th>
+                    <th>Contoh</th>
+                    <th>Dalil</th>
+                </tr>
+                <tr>
+                    <td>Idzhar Halqi</td>
+                    <td>Nun mati atau tanwin bertemu huruf halq (ء, ه, ع, ح, غ, خ), dibaca jelas tanpa dengung</td>
+                    <td class="arabic">مِنْ آَمَنَ - مِنْ عِلْمٍ</td>
+                    <td>Ijma' ulama berdasarkan kaidah bahasa Arab</td>
+                </tr>
+                <tr>
+                    <td>Idgham Bighunnah</td>
+                    <td>Nun mati atau tanwin bertemu huruf ي, ن, م, و, dibaca masuk dengan dengung</td>
+                    <td class="arabic">مِنْ وَرَائِهِمْ - مِنْ نَذِيرٍ</td>
+                    <td>HR. Abu Dawud tentang cara Rasulullah membaca</td>
+                </tr>
+                <tr>
+                    <td>Idgham Bilaghunnah</td>
+                    <td>Nun mati atau tanwin bertemu huruf ل atau ر, dibaca masuk tanpa dengung</td>
+                    <td class="arabic">مِنْ لَدُنْهُ - مِنْ رَبِّهِمْ</td>
+                    <td>Ijma' ulama qurra'</td>
+                </tr>
+                <tr>
+                    <td>Iqlab</td>
+                    <td>Nun mati atau tanwin bertemu huruf ب, berubah menjadi mim dengan dengung</td>
+                    <td class="arabic">لَيُنْبَذَنَّ - مِنْ بَعْدِ</td>
+                    <td>HR. Nasa'i tentang bacaan Nabi</td>
+                </tr>
+                <tr>
+                    <td>Ikhfa' Haqiqi</td>
+                    <td>Nun mati atau tanwin bertemu 15 huruf ikhfa', dibaca samar dengan dengung</td>
+                    <td class="arabic">أَنْ صَلُّوا - مِنْ طَيِّبَاتِ</td>
+                    <td>Kitab-kitab tajwid klasik</td>
+                </tr>
+                <tr>
+                    <td>Mad Thabi'i</td>
+                    <td>Huruf mad (alif, ya', waw) yang tidak bertemu hamzah atau sukun, dibaca 2 harakat</td>
+                    <td class="arabic">قَالَ - نُوحِيهَا</td>
+                    <td>QS. Al-Muzzammil: 4 tentang tartil</td>
+                </tr>
+                <tr>
+                    <td>Mad Jaiz Munfasil</td>
+                    <td>Mad thabi'i bertemu hamzah di kata lain, boleh dibaca 2, 4, atau 5 harakat</td>
+                    <td class="arabic">إِنَّا أَنْزَلْنَاهُ</td>
+                    <td>Perbedaan qira'at para imam</td>
+                </tr>
+                <tr>
+                    <td>Mad Wajib Muttasil</td>
+                    <td>Mad thabi'i bertemu hamzah dalam satu kata, dibaca 4 atau 5 harakat</td>
+                    <td class="arabic">جَاءَ - سَوَاءٌ</td>
+                    <td>Kesepakatan ahli qira'at</td>
+                </tr>
+                <tr>
+                    <td>Qalqalah</td>
+                    <td>Membunyikan huruf qalqalah (ق, ط, ب, ج, د) dengan pantulan suara ketika mati</td>
+                    <td class="arabic">يَطْمَعُ - مَخْلُوقٌ</td>
+                    <td>Kitab "Ad-Durrah al-Mudhiyyah"</td>
+                </tr>
+                <tr>
+                    <td>Tafkhim dan Tarqiq</td>
+                    <td>Membaca huruf dengan tebal (tafkhim) atau tipis (tarqiq) sesuai kondisi</td>
+                    <td class="arabic">الرَّحْمَٰنِ - بِرِيحٍ</td>
+                    <td>Kajian fonetik bahasa Arab</td>
+                </tr>
+            </table>
+            
+            <h3>Penjelasan Beberapa Hukum Tajwid Penting</h3>
+            
+            <h4>1. Hukum Nun Mati dan Tanwin</h4>
+            <p>Hukum ini berlaku ketika nun mati (نْ) atau tanwin (ً ٍ ٌ) bertemu dengan huruf-huruf tertentu. Terdapat lima hukum:</p>
+            <ul>
+                <li><strong>Idzhar Halqi</strong>: Dibaca jelas ketika bertemu huruf halq (ء, ه, ع, ح, غ, خ)</li>
+                <li><strong>Idgham Bighunnah</strong>: Masuk dengan dengung ketika bertemu ي, ن, م, و</li>
+                <li><strong>Idgham Bilaghunnah</strong>: Masuk tanpa dengung ketika bertemu ل, ر</li>
+                <li><strong>Iqlab</strong>: Berubah menjadi mim ketika bertemu ب</li>
+                <li><strong>Ikhfa' Haqiqi</strong>: Dibaca samar ketika bertemu 15 huruf lainnya</li>
+            </ul>
+            
+            <h4>2. Hukum Mim Mati</h4>
+            <p>Ketika mim mati (مْ) bertemu huruf tertentu, ada tiga hukum:</p>
+            <ul>
+                <li><strong>Ikhfa' Syafawi</strong>: Ketika bertemu ب, dibaca samar dengan bibir tertutup</li>
+                <li><strong>Idgham Mimi</strong>: Ketika bertemu م, dimasukkan ke mim berikutnya</li>
+                <li><strong>Idzhar Syafawi</strong>: Ketika bertemu selain ب dan م, dibaca jelas</li>
+            </ul>
+            
+            <h4>3. Hukum Mad</h4>
+            <p>Mad artinya memanjangkan bacaan. Ada dua jenis mad:</p>
+            <ul>
+                <li><strong>Mad Asli/Thabi'i</strong>: Panjang 2 harakat (alif, ya', waw mati setelah huruf berharakat)</li>
+                <li><strong>Mad Far'i</strong>: Perpanjangan karena sebab tertentu, seperti hamzah, sukun, atau waqaf</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section id="makhraj" class="container">
+        <h2>Makhraj Huruf Hijaiyah</h2>
+        <div class="card">
+            <p>Makhraj huruf adalah tempat keluarnya huruf-huruf hijaiyah ketika diucapkan. Mengetahui makhraj huruf dengan tepat adalah dasar utama dalam ilmu tajwid.</p>
+            
+            <table>
+                <tr>
+                    <th>Kelompok Huruf</th>
+                    <th>Makhraj</th>
+                    <th>Huruf</th>
+                    <th>Cara Pengucapan</th>
+                </tr>
+                <tr>
+                    <td>Huruf Halqiyah</td>
+                    <td>Tenggorokan</td>
+                    <td class="arabic">ء, ه, ع, ح, غ, خ</td>
+                    <td>Keluar dari bagian berbeda di tenggorokan</td>
+                </tr>
+                <tr>
+                    <td>Huruf Lahatiyah</td>
+                    <td>Pangkal lidah</td>
+                    <td class="arabic">ق, ك</td>
+                    <td>Pangkal lidah menempel ke langit-langit</td>
+                </tr>
+                <tr>
+                    <td>Huruf Syajariyah</td>
+                    <td>Pertengahan lidah</td>
+                    <td class="arabic">ج, ش, ي</td>
+                    <td>Tengah lidah menempel ke langit-langit</td>
+                </tr>
+                <tr>
+                    <td>Huruf Asaliyah</td>
+                    <td>Ujung lidah</td>
+                    <td class="arabic">ض, ل, ن, ر</td>
+                    <td>Ujung lidah menempel ke gusi atas</td>
+                </tr>
+                <tr>
+                    <td>Huruf Dzaliyah</td>
+                    <td>Gigi atas</td>
+                    <td class="arabic">ت, د, ط</td>
+                    <td>Ujung lidah menempel ke pangkal gigi atas</td>
+                </tr>
+                <tr>
+                    <td>Huruf Nith'iyah</td>
+                    <td>Ujung lidah & gigi</td>
+                    <td class="arabic">ص, ز, س</td>
+                    <td>Ujung lidah mendekati gigi bawah</td>
+                </tr>
+                <tr>
+                    <td>Huruf Lisawiyah</td>
+                    <td>Bibir</td>
+                    <td class="arabic">ف, ب, م, و</td>
+                    <td>Bibir atas dan bawah bertemu</td>
+                </tr>
+                <tr>
+                    <td>Huruf Khaisyum</td>
+                    <td>Rongga hidung</td>
+                    <td class="arabic">Ghunnah (dengung)</td>
+                    <td>Suara keluar melalui hidung</td>
+                </tr>
+            </table>
+            
+            <h3>Penjelasan Makhraj Huruf</h3>
+            <p>Secara rinci, makhraj huruf dibagi menjadi 17 tempat keluarnya huruf:</p>
+            
+            <h4>1. Makhraj Jauf (Rongga Mulut dan Tenggorokan)</h4>
+            <p>Tempat keluarnya huruf mad (alif, waw, ya') dan huruf-huruf yang keluar dari tenggorokan:</p>
+            <ul>
+                <li><strong>أقصى الحلق</strong> (pangkal tenggorokan): ء, ه</li>
+                <li><strong>وسط الحلق</strong> (tengah tenggorokan): ع, ح</li>
+                <li><strong>أدنى الحلق</strong> (ujung tenggorokan): غ, خ</li>
+            </ul>
+            
+            <h4>2. Makhraj Lisan (Lidah)</h4>
+            <p>Tempat keluarnya huruf-huruf yang melibatkan lidah:</p>
+            <ul>
+                <li><strong>Pangkal lidah</strong>: ق, ك</li>
+                <li><strong>Tengah lidah</strong>: ج, ش, ي</li>
+                <li><strong>Ujung lidah</strong>: ض, ل, ن, ر</li>
+                <li><strong>Ujung lidah dan gigi atas</strong>: ت, د, ط</li>
+                <li><strong>Ujung lidah dan gigi bawah</strong>: ص, ز, س</li>
+                <li><strong>Pinggir lidah</strong>: ظ, ذ, ث</li>
+            </ul>
+            
+            <h4>3. Makhraj Syafatain (Bibir)</h4>
+            <p>Tempat keluarnya huruf-huruf bibir:</p>
+            <ul>
+                <li><strong>Bibir atas dan bawah</strong>: ف, ب, م</li>
+                <li><strong>Bibir dimonyongkan</strong>: و</li>
+            </ul>
+            
+            <h4>4. Makhraj Khaisyum (Rongga Hidung)</h4>
+            <p>Tempat keluarnya ghunnah (dengung) pada nun dan mim bertasydid atau ketika ikhfa', idgham bighunnah, dan iqlab.</p>
+            
+            <div class="highlight">
+                <p class="arabic">وَلَقَدْ يَسَّرْنَا الْقُرْآنَ لِلذِّكْرِ فَهَلْ مِن مُّدَّكِرٍ</p>
+                <p>"Dan sungguh, telah Kami mudahkan Al-Qur'an untuk peringatan, maka adakah orang yang mau mengambil pelajaran?" (QS. Al-Qamar: 17)</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contoh" class="container">
+        <h2>Contoh Penerapan Tajwid</h2>
+        <div class="card">
+            <p>Berikut adalah contoh penerapan hukum tajwid dalam beberapa ayat Al-Qur'an:</p>
+            
+            <h3>Contoh 1: Surah Al-Fatihah Ayat 1</h3>
+            <p class="arabic" style="font-size: 2rem; text-align: center;">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+            <p><strong>Penjelasan Tajwid:</strong></p>
+            <ul>
+                <li><strong>بِسْمِ</strong>: Ikhfa' syafawi (mim mati bertemu ba')</li>
+                <li><strong>اللَّهِ</strong>: Lam tafkhim (lam jalalah setelah fathah)</li>
+                <li><strong>الرَّحْمَٰنِ</strong>: Idgham Mimi (mim mati bertemu mim)</li>
+                <li><strong>الرَّحِيمِ</strong>: Mad 'arid lissukun (mad thabi'i di akhir ayat)</li>
+            </ul>
+            
+            <h3>Contoh 2: Surah Al-Ikhlas Ayat 1-2</h3>
+            <p class="arabic" style="font-size: 2rem; text-align: center;">قُلْ هُوَ اللَّهُ أَحَدٌ ﴿١﴾ اللَّهُ الصَّمَدُ ﴿٢﴾</p>
+            <p><strong>Penjelasan Tajwid:</strong></p>
+            <ul>
+                <li><strong>قُلْ</strong>: Qalqalah sughra (qaf mati)</li>
+                <li><strong>هُوَ</strong>: Mad thabi'i (waw mati setelah dhommah)</li>
+                <li><strong>اللَّهُ</strong>: Lam tafkhim (lam jalalah setelah fathah)</li>
+                <li><strong>أَحَدٌ</strong>: Nun tanwin dibaca jelas karena waqaf</li>
+                <li><strong>الصَّمَدُ</strong>: Syiddah (shad bertasydid)</li>
+            </ul>
+            
+            <h3>Contoh 3: Surah Al-Baqarah Ayat 255 (Ayat Kursi)</h3>
+            <p class="arabic" style="font-size: 1.5rem; text-align: center;">اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ</p>
+            <p><strong>Beberapa Hukum Tajwid dalam Ayat Kursi:</strong></p>
+            <ul>
+                <li><strong>اللَّهُ</strong>: Lam tafkhim</li>
+                <li><strong>لَا إِلَٰهَ</strong>: Mad jaiz munfasil (alif lam bertemu hamzah di kata lain)</li>
+                <li><strong>الْقَيُّومُ</strong>: Mad wajib muttasil (ya' bertasydid bertemu hamzah dalam satu kata)</li>
+                <li><strong>سِنَةٌ وَلَا</strong>: Idgham bighunnah (nun tanwin bertemu waw)</li>
+                <li><strong>عِلْمِهِ إِلَّا</strong>: Ikhfa' haqiqi (mim mati bertemu hamzah)</li>
+                <li><strong>الْعَظِيمُ</strong>: Mad 'arid lissukun (mim mati di akhir ayat)</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section id="latihan" class="container">
+        <h2>Latihan Soal Tajwid</h2>
+        <div class="card">
+            <p>Berikut adalah 5 soal latihan tentang ilmu tajwid beserta jawabannya:</p>
+            
+            <ol>
+                <li>
+                    <p><strong>Apa hukum tajwid pada kata "مِنْ بَعْدِ" dalam QS. Yusuf: 64 dan bagaimana cara membacanya?</strong></p>
+                    <p><strong>Jawaban:</strong> Hukumnya adalah iqlab karena nun mati bertemu huruf ba'. Cara membacanya adalah nun mati diubah menjadi mim dengan dengung selama 2 harakat.</p>
+                </li>
+                <li>
+                    <p><strong>Sebutkan 4 huruf idgham bighunnah dan berikan contoh dalam Al-Quran?</strong></p>
+                    <p><strong>Jawaban:</strong> ي
+                        ➔ "مَنْ يَقُولُ" (QS. Al-Baqarah: 8)
+                        Bacaan: "may-yaqūlu"
+                        
+                        ن
+                        ➔ "مِنْ نِعْمَةٍ" (QS. Ad-Duha: 11)
+                        Bacaan: "min-ni'matin"
+                        
+                        م
+                        ➔ "مِنْ مَالٍ" (QS. Al-Fajr: 20)
+                        Bacaan: "mim-mālin"
+                        
+                        و
+                        ➔ "مِنْ وَلِيٍّ" (QS. Muhammad: 11)
+                        Bacaan: "miw-waliyyin"</p>
+                </li>
+                <li>
+                    <p><strong>Apa pengertian ilmu tajwid?</strong></p>
+                    <p><strong>Jawaban:</strong> Ilmu tajwid adalah ilmu yang mempelajari cara membaca Al-Qur'an dengan baik dan benar, sesuai dengan makhraj (tempat keluarnya huruf) dan sifat-sifat huruf.
+                    </p>
+                </li>
+                <li>
+                    <p><strong>Sebutkan 3 contoh hukum bacaan mad thabi’i!
+                    </strong></p>
+                    <p><strong>Jawaban :</strong> مَـالِكِ (maaliki)
+
+                        قِيلَ (qeela)
+                        
+                        نُوحٍ (nuuhin)
+                        </p>
+                </li>
+                <li>
+                    <p><strong>Apa saja huruf-huruf idgham bila ghunnah?
+                    </strong></p>
+                    <p><strong>Jawaban :</strong>Huruf-huruf idgham bila ghunnah adalah: ي, ن, م, و (Ya, Nun, Mim, Wawu).</p>
+                </li>
+                </ol>
+            </div>
+            </section>
+                <section id="Tim Kami" class="container">
+                    <h2>Anggota Kelompok / Tim</h2>
+                    <div class="card">
+                        <p><strong>Hasbih Cesaro Ramadhan/04 X-PPLG 2</strong></p>
+                        <p><strong>Muhammad Farhan Aqilla Ramadhan/13 X-PPLG 2</strong></p>
+                        <p><strong>Raditya Bambang Satriya/21 X-PPLG 2</strong></p>
+                        <p><strong>Tegar Selamet Raharja/28 X-PPLG 2</strong></p>
+                        <p><strong>Vallenta Azhar Zaidan/30 X-PPLG 2</strong></p>
+                    </div>
+                </section>
+</body>
+</html>
